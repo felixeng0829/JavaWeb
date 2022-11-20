@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+	<insert id="add" parameterType="Model.member">
+	insert into member (username,password,name,address,phone,mobile)
+	values(#{username},#{password},#{name},#{address},#{phone},#{mobile})
+	</insert>
+	<select id="selectAll" resultType="Model.member">
+		select * from member
+	</select>
+	
+	<select id="seleteId" resultType="Model.member">
+	selete * from member where id=#{id}
+	</select>
+	
+	<select id="selectUsername" resultType="Model.member">
+	select * from member where username=#{username}
+	</select>
+	
+	<update id="update" parameterType="Model.member">
+	update member set
+	username=#{username},
+	password=#{password},
+	name=#{name},
+	address=#{address},
+	phone=#{phone},
+	mobile=#{mobile}
+	
+	where id=#{id}
+	</update>
+	
+	<delete id="deleteId" parameterType="Model.member">
+	delete from member where id=#{id}
+	</delete>
+</mapper>
