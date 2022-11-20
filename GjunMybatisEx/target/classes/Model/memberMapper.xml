@@ -18,6 +18,9 @@
 	<select id="selectUsername" resultType="Model.member">
 	select * from member where username=#{username}
 	</select>
+	<select id="selectUsername2" resultType="Model.member" parameterType="map">
+	select * from member where username=#{username} and password=#{password}
+	</select>
 	
 	<update id="update" parameterType="Model.member">
 	update member set

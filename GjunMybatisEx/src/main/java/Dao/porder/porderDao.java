@@ -11,6 +11,7 @@ public interface porderDao {
 	//R
 	porder selectId(int id);
 	List<porder> selectAll();
+	List<porder> selectSum(int start,int end);
 	//U
 	void update(porder p);
 	//D

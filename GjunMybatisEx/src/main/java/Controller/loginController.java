@@ -30,7 +30,7 @@ public class loginController extends HttpServlet {
 		 */
     	String username=request.getParameter("username");
 		String password=request.getParameter("password");
-		member m=new implMember().selectUsername(username);
+		member m=new implMember().selectUsername(username,password);
 		HttpSession session=request.getSession();
 		if(m != null)
 		{

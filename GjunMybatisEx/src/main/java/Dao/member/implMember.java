@@ -1,6 +1,8 @@
 package Dao.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -13,7 +15,8 @@ public class implMember implements memberDao {
 		//System.out.println(new implMember().selectAll());
 		//member m =new member("username","ps","name","台灣","1","2");
 		//new implMember().add(m);
-		System.out.println(new implMember().selectUsername("aaaa"));
+		//System.out.println(new implMember().selectUsername("aaaa"));
+		System.out.println(new implMember().selectUsername("1","2"));
 	}
 
 	@Override
@@ -59,6 +62,19 @@ public class implMember implements memberDao {
 		SqlSession se=new DbConnection().getDb();
 		member m=null;
 		List<member> l=se.selectList("memberMapper.selectUsername", username);
+		member[] M=l.toArray(new member[l.size()]);
+		if(l.size()!=0) m=M[0];
+		return m;
+	}
+
+	@Override
+	public member selectUsername(String username, String password) {
+		SqlSession se=new DbConnection().getDb();
+		Map<String,String> map=new HashMap();
+		map.put("username", username);
+		map.put("password", password);
+		member m=null;
+		List<member> l=se.selectList("memberMapper.selectUsername", map);
 		member[] M=l.toArray(new member[l.size()]);
 		if(l.size()!=0) m=M[0];
 		return m;

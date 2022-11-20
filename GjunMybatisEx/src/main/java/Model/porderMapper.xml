@@ -23,6 +23,10 @@ delete...delete
  	 select * from porder where id=#{id}
   </select>
   
+  <select id="selectSum" resultType="Model.porder">
+  select * from porder where sum between #{start} and #{end}
+  </select>
+  
   <update id="update" parameterType="Model.porder">
   update porder set
   desk=#{desk},

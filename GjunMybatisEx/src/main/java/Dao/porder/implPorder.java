@@ -1,6 +1,8 @@
 package Dao.porder;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -13,9 +15,10 @@ public class implPorder implements porderDao{
 		//porder p=new porder("C桌",2,2,2);
 		//new implPorder().add(p);
 		
-				for(porder o:new implPorder().selectAll())
+				//for(porder o:new implPorder().selectAll())
+				//{System.out.println(o.getId()+"\t"+o.getSum());}
+				for(porder o:new implPorder().selectSum(1000, 3000))
 				{System.out.println(o.getId()+"\t"+o.getSum());}
-				
 
 	}
 
@@ -60,6 +63,16 @@ public class implPorder implements porderDao{
 		SqlSession se=new DbConnection().getDb();
 		se.update("porderMapper.update",p);
 		se.commit();
+	}
+
+	@Override
+	public List<porder> selectSum(int start, int end) {
+		SqlSession se=new DbConnection().getDb();
+		Map<String,Integer> map=new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		List<porder> l=se.selectList("porderMapper.selectSum", map);
+		return l;
 	}
 
 }

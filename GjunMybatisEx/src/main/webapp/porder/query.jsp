@@ -9,19 +9,19 @@
 3.false-->queryAll
 
 */
-/*String Start = request.getParameter("start");
+String Start = request.getParameter("start");
 String End = request.getParameter("end");
 List<porder> l = null;
 if (Start != null && Start != "" && End != null && End != "") {
 	int S = Integer.parseInt(Start);
 	int E = Integer.parseInt(End);
 
-	l = new implPorder().querySum(S, E);
+	l = new implPorder().selectSum(S, E);
 	} 
 else {
-	l = new implPorder().queryAll();
-}*/
-List<porder> l=new implPorder().selectAll();
+	l = new implPorder().selectAll();
+}
+//List<porder> l=new implPorder().selectAll();
 %>
 <!DOCTYPE html>
 <html>

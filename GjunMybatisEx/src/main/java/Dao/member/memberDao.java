@@ -11,6 +11,7 @@ public interface memberDao {
 	List<member> selectAll();
 	member selectId(int id);
 	member selectUsername(String username);
+	member selectUsername(String username,String password);
 
 	//U
 	void update(member m);
